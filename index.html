@@ -6,7 +6,8 @@
   <meta name="theme-color" content="#f5f3ee" />
   <meta name="description" content="A calm, text-only visual discovery experience." />
   <title>ImagePulse — find your next visual</title>
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="styles.css" />
+  <script src="script.js" defer></script>
 </head>
 <body>
   <header class="topbar">
@@ -22,14 +23,14 @@
       <div class="hero-copy">
         <p class="eyebrow"><span class="eyebrow-dot"></span> A little inspiration, daily</p>
         <h1 id="hero-title">Find your next<br /><span>point of view.</span></h1>
-        <p class="hero-description">A considered collection of places, colors, and moments worth pausing for. A calm, text-only visual theme.</p>
-        <div class="search-form" aria-label="Search field preview">
+        <p class="hero-description">A considered collection of places, colors, and moments worth pausing for. Search is coming soon.</p>
+        <form class="search-form" id="search-form" role="search">
           <label class="visually-hidden" for="search-input">Search the collection</label>
           <svg class="search-icon" aria-hidden="true" viewBox="0 0 24 24"><circle cx="10.8" cy="10.8" r="6.8" /><path d="m16 16 4.2 4.2" /></svg>
-          <input id="search-input" type="search" placeholder="Try “mountains” or “golden hour”" autocomplete="off" disabled />
-          <button id="search-button" type="button" disabled>Search <span aria-hidden="true">↗</span></button>
-        </div>
-        <p class="search-hint">Static preview · no images or interactions</p>
+          <input id="search-input" type="search" placeholder="Try “mountains” or “golden hour”" autocomplete="off" />
+          <button id="search-button" type="submit">Search <span aria-hidden="true">↗</span></button>
+        </form>
+        <p class="search-hint">Search controls are ready; image search is planned next.</p>
       </div>
       <div class="hero-art" aria-hidden="true">
         <div class="orbit orbit-one"></div>
@@ -48,15 +49,16 @@
         </div>
         <p class="result-count">0 images</p>
       </div>
-      <div class="prompt-row" aria-label="Decorative search suggestions">
+      <div class="prompt-row" role="group" aria-label="Suggested searches">
         <span class="prompt-label">Try a prompt</span>
-        <span class="prompt-chip">Golden hour <span aria-hidden="true">↗</span></span>
-        <span class="prompt-chip">Mountain air <span aria-hidden="true">↗</span></span>
-        <span class="prompt-chip">Quiet coast <span aria-hidden="true">↗</span></span>
+        <button class="prompt-chip" type="button" data-prompt="golden hour">Golden hour <span aria-hidden="true">↗</span></button>
+        <button class="prompt-chip" type="button" data-prompt="mountain air">Mountain air <span aria-hidden="true">↗</span></button>
+        <button class="prompt-chip" type="button" data-prompt="quiet coast">Quiet coast <span aria-hidden="true">↗</span></button>
       </div>
+      <div class="results-grid" id="results" aria-label="Image search results"></div>
       <div class="empty-state" role="status" aria-live="polite">
         <span class="empty-mark" aria-hidden="true">0</span>
-        <p id="status">No images in this text-only design.</p>
+        <p id="status">No image results yet. Image search is planned for a future update.</p>
       </div>
     </section>
 

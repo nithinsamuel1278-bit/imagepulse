@@ -232,10 +232,15 @@ h1 span {
   border-radius: 5px;
   background: var(--ink);
   color: white;
-  cursor: default;
+  cursor: pointer;
   font-size: 11px;
   font-weight: 600;
-  opacity: 1;
+  transition: background 160ms ease, color 160ms ease;
+}
+
+#search-button:hover {
+  background: var(--green);
+  color: var(--ink);
 }
 
 .search-hint {
@@ -394,12 +399,29 @@ h2 {
   border-radius: 4px;
   background: var(--white);
   color: #586258;
-  cursor: default;
+  cursor: pointer;
   font-size: 10px;
+  transition: background 150ms ease, border-color 150ms ease, color 150ms ease;
+}
+
+.prompt-chip:hover {
+  border-color: var(--ink);
+  background: var(--ink);
+  color: white;
+}
+
+.prompt-chip:hover span {
+  color: var(--green);
 }
 
 .prompt-chip span {
   color: #929a91;
+}
+
+.results-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 18px;
 }
 
 .empty-state {
