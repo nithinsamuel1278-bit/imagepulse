@@ -1,0 +1,1 @@
+// Empty temporary js file to prevent 404 errors when loading the script in the HTML file.
