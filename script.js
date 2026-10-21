@@ -1,0 +1,1 @@
+// Intentionally blank: ImagePulse is a static, text-only interface.
