@@ -424,12 +424,41 @@ h2 {
   gap: 18px;
 }
 
+.card {
+  min-width: 0;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  background: var(--white);
+}
+
+.card img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  display: block;
+  object-fit: cover;
+  background: var(--paper);
+}
+
+.card p {
+  margin: 0;
+  padding: 10px 12px;
+  color: #586258;
+  font-size: 11px;
+  line-height: 1.5;
+  overflow-wrap: anywhere;
+}
+
 .empty-state {
   min-height: 118px;
   display: flex;
   align-items: center;
   gap: 16px;
   color: #7c847b;
+}
+
+.empty-state[hidden] {
+  display: none;
 }
 
 .empty-mark {
