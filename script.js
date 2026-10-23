@@ -4,6 +4,7 @@ const results = document.getElementById("results");
 const resultCount = document.querySelector(".result-count");
 const emptyState = document.querySelector(".empty-state");
 const status = document.getElementById("status");
+let latestSearch = 0;
 
 async function search(query) {
   const params = new URLSearchParams({
@@ -25,6 +26,9 @@ async function search(query) {
   }
 
   const data = await response.json();
+  if (data.error) {
+    throw new Error(data.error.info || "Image search API returned an error.");
+  }
   return Object.values(data.query?.pages ?? []).filter(
     (item) => item.imageinfo?.[0]?.thumburl,
   );
@@ -57,6 +61,7 @@ function render(items) {
 }
 
 async function runSearch(query) {
+  const searchId = ++latestSearch;
   results.replaceChildren();
   resultCount.textContent = "Searching…";
   emptyState.hidden = false;
@@ -64,8 +69,14 @@ async function runSearch(query) {
 
   try {
     const items = await search(query);
+    if (searchId !== latestSearch) {
+      return;
+    }
     render(items);
   } catch (error) {
+    if (searchId !== latestSearch) {
+      return;
+    }
     resultCount.textContent = "Search unavailable";
     status.textContent = "Something went wrong while searching. Please try again.";
     console.error(error);
